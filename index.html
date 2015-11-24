@@ -14,6 +14,15 @@
         font-weight: normal;
       }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      code {
+        border-radius: 5px;
+      }
+
+      .large {
+        margin-top: 125px;
+        font-size: 9em;
+      }
     </style>
   </head>
   <body>
@@ -22,19 +31,25 @@
 class: center, middle
 
 # ~~Best practices for deploying apps to~~ Cloud Foundry for developers
-![Default-aligned image](https://andypiper.files.wordpress.com/2012/05/yak_light_outline_vectorized.png?w=300&h=213)
+![Default-aligned image](images/yak.png)
 
 @mikfreedman
 
 ???
+This talk is less about Best Practices and more about using CF.
 
-funky funky notes
+Yak Shaving is the last step of a series of steps that occurs when you find something you need to do.
+
+Cloud Foundry can be considered a pre-shaved yak
+
 ---
+class: middle
 
 # Agenda
 
-1. About Me + Cloud Foundry
-1. Frustrations
+1. Introduction
+1. Challenges
+1. Routing
 1. The Cloud Foundry CLI
 1. Cloudfoundry Plugins
 1. CF Trace
@@ -43,16 +58,79 @@ funky funky notes
 
 ---
 
-# About Me + Cloud Foundry
+# Introduction
+
+* Pivotal Labs
+* Cloud Foundry
+* Me + Cloud Foundry
 
 ???
-for fun and profit
+
+---
+# Challenges
+
+.large[
+`cf push`
+]
+
+???
+
+* The story we are often told as developers is just `cf push` that's all there is.
+* In reality, this is often not true. 
+* Cloud Foundry is geared towards standard 12 factor apps (as it should be)
+* Often apps are more complex
+
+---
+
+# Routing
+
+* Application Level Routing
+* Orphaned Routes
+* Leveraging This Knowledge
+
+???
+*
+
+---
+# Working with Routes
+
+.small[
+`cf routes`
+```bash
+Getting routes as mfreedman@pivotal.io ...
+
+space         host              domain      apps
+development   mik-sinatra       cfapps.io   mik-maintenance
+development   mik-maintenance   cfapps.io   mik-maintenance
+```
+
+`cf map-route`
+```bash
+$ cf map-route mik-maintenance cfapps.io -n mik-sinatra
+Creating route mik-sinatra.cfapps.io for org mik / space development as mfreedman@pivotal.io...
+OK
+Route mik-sinatra.cfapps.io already exists
+Adding route mik-sinatra.cfapps.io to app mik-maintenance in org mik / space development as mfreedman@pivotal.io...
+OK
+```
+
+`cf unmap-route`
+```bash
+$ cf unmap-route mik-sinatra cfapps.io -n mik-sinatra
+Removing route mik-sinatra.cfapps.io from app mik-sinatra in org mik / space development as mfreedman@pivotal.io...
+OK
+```
+]
 
     </textarea>
-    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js"></script>
+    <script type="text/javascript">
+      var hljs = remark.highlighter.engine;
     </script>
-    <script>
-      var slideshow = remark.create();
+    <script type="text/javascript">
+      var slideshow = remark.create({
+        highlightStyle: 'tomorrow-night-eighties'
+      });
     </script>
   </body>
 </html>
