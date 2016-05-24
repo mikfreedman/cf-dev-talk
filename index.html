@@ -138,27 +138,27 @@ background-image: url(images/iceberg.jpg)
 .small[
 `cf routes`
 ```bash
-Getting routes as mfreedman@pivotal.io ...
+Getting routes for org pcfdev-org / space pcfdev-space as admin ...
 
-space         host              domain      apps
-development   mik-sinatra       cfapps.io   mik-maintenance
-development   mik-maintenance   cfapps.io   mik-maintenance
+space          host                       domain            port   path   type   apps                       service
+pcfdev-space   maintenance                local.pcfdev.io                        maintenance
+pcfdev-space   sinatra                    local.pcfdev.io                        sinatra
 ```
 
 `cf map-route`
 ```bash
-$ cf map-route mik-maintenance cfapps.io -n mik-sinatra
-Creating route mik-sinatra.cfapps.io for org mik / space development
+$ cf map-route maintenance local.pcfdev.io -n sinatra
+Creating route sinatra.local.pcfdev.io for org pcfdev-org / space pcfdev-space as admin...
 OK
-Route mik-sinatra.cfapps.io already exists
-Adding route mik-sinatra.cfapps.io to app mik-maintenance in org..
+Route sinatra.local.pcfdev.io already exists
+Adding route sinatra.local.pcfdev.io to app maintenance in org pcfdev-org / space pcfdev-space as admin...
 OK
 ```
 
 `cf unmap-route`
 ```bash
-$ cf unmap-route mik-sinatra cfapps.io -n mik-sinatra
-Removing route mik-sinatra.cfapps.io from app mik-sinatra in org..
+cf unmap-route sinatra local.pcfdev.io -n sinatra
+Removing route sinatra.local.pcfdev.io from app sinatra in org pcfdev-org / space pcfdev-space as admin...
 OK
 ```
 ]

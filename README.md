@@ -29,3 +29,35 @@ Route Services         | http://docs.cloudfoundry.org/services/route-services.ht
 
 This repository contains all the demo applications used during the talk
 
+
+## Setting up the apps
+
+#### ba-route-service
+
+    cf push
+    cf create-user-provided-service basic-auth -r https://basic-auth-route-service.local.pcfdev.io
+    cf bind-route-service local.pcfdev.io basic-auth --hostname spring-example
+
+### logging-route-service 
+
+    cf push
+    cf create-user-provided-service logging -r https://logging-route-service.local.pcfdev.io
+    cf bind-route-service local.pcfdev.io logging --hostname maintenance
+    cf bind-route-service local.pcfdev.io logging --hostname sinatra
+    cf bind-route-service local.pcfdev.io logging --hostname spring-example
+
+### maintenance
+
+    cf push
+
+### sinatra
+
+    cf push
+    cf routes
+    cf map-route maintenance local.pcfdev.io -n sinatra
+    cf unmap-route sinatra local.pcfdev.io -n sinatra
+
+### spring-example
+
+    cf push
+    cf ssh -T -L 8000:localhost:8000 spring-example
