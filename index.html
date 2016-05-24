@@ -129,6 +129,8 @@ background-image: url(images/iceberg.jpg)
 * Orphaned: once a route is deleted - it's back in the pool
   * CF does not delete routes by default for this reason
 
+** BECAUSE IT'S SOFTWARE, IT'S HIGHLY CONFIGURABLE**
+
 ---
 # Working with Routes
 
@@ -183,11 +185,25 @@ background-image: url(images/jpark.jpg)
 ---
 # Getting over the wall
 
-## By Proxy
+## HTTP Proxy
 
 Install a proxy on your bastion host, then
 ```bash
 HTTP_PROXY=http://bastion cf target -a http://system.cf
+```
+
+.center[
+![Center-aligned image](images/profit.jpg)
+]
+
+---
+# Getting over the wall
+
+## Using SSH Tunnels
+
+```bash
+ssh -L 80:system.cf:80 bastion # from local machine
+cf target -a http://localhost
 ```
 
 ## Using SSH Reverse Tunnels
@@ -201,6 +217,7 @@ cf target -a http://localhost
 
 ???
 * Tinyproxy
+* BASTION IS A JUMPHOST
 
 ---
 # Plugins
@@ -265,6 +282,7 @@ class: middle, center
 ---
 # User Provided Services
 
+## External Resources
 ## 12 Factor Apps [Config]
 
 > The twelve-factor app stores config in environment variables (often shortened to env vars or env). Env vars are easy to change between deploys without changing any code; unlike config files, there is little chance of them being checked into the code repo accidentally; and unlike custom config files, or other config mechanisms such as Java System Properties, they are a language- and OS-agnostic standard.
@@ -364,6 +382,22 @@ applications:
 ---
 class: jpark
 background-image: url(images/office.jpg)
+
+---
+.center[
+![Center-aligned image](images/www.png)
+]
+
+## Links to the World Wide Web
+
+Page                   | URL
+---                    | ---
+Pr Shaved Yak          | http://preshavedyak.com/
+Onsi's Talk on Diego   | https://youtu.be/1OkmVTFhfLY
+Autopilot (Blue Green) | https://github.com/concourse/autopilot
+The Twelve Factor App  | http://12factor.net/
+jq (JSON)              | https://stedolan.github.io/jq/
+cf CLI                 | https://docs.cloudfoundry.org/devguide/installcf/
 
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js"></script>
