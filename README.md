@@ -18,7 +18,7 @@ Here are some interesting links from the talk
 
 Page                   | URL
 ---                    | ---
-Pr Shaved Yak          | http://preshavedyak.com/
+Pre Shaved Yak          | http://preshavedyak.com/
 Onsi's Talk on Diego   | https://youtu.be/1OkmVTFhfLY
 Autopilot (Blue Green) | https://github.com/concourse/autopilot
 The Twelve Factor App  | http://12factor.net/
