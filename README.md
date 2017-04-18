@@ -59,9 +59,7 @@ This repository contains all the demo applications used during the talk
 
 ### spring-example
 
-This project uses the buildpack at: https://github.com/mikfreedman/java-buildpack . You **have** to fork the buildpack to set the debug flag - be sure your fork is always up to date.
-
-
+    cf se spring-example JBP_CONFIG_DEBUG '{enabled: true}'
     cf push
     cf ssh -T -L 8000:localhost:8000 spring-example
 
